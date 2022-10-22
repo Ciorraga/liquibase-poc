@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1_0_client-newtable-lb
+      author: poc-liquibase-ms
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: client
+      comments: creating client table
+      changes:
+        - createTable:
+            tableName: client
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_client
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: nif
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 1_0_workshop-newtable-lb
+      author: poc-liquibase-ms
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: workshop
+      comment: creating workshop table                     
+      changes:
+        - createTable:
+            tableName: workshop
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_workshop
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cif
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owner
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false

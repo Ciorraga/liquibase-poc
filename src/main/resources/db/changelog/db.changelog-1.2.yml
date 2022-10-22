@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1_2_client-newfield-lb
+      author: poc-liquibase-ms
+      preConditions:
+        onFail: MARK_RAN
+        tableExists:
+          tableName: client
+        not:
+          columnExists:
+            tableName: client
+            columnName: newFieldExample
+      comment: adding new field to client table
+      changes:
+        - addColumn:
+            tableName: client
+            columns:
+              - column:
+                  name: newFieldExample
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 1_2_product-drop-lb
+      author: poc-liquibase-ms
+      preConditions:
+        onFail: MARK_RAN
+        tableExists:
+          tableName: product  
+      comment: dropping product table    
+      changes:
+        - dropTable:  
+            cascadeConstraints: true  
+            tableName: product     
+                        

@@ -1,0 +1,19 @@
+spring.application.name: liquibase-poc
+
+server:
+   port: 8085
+   servlet.context-path: /liquibase
+
+spring:
+  datasource:
+    username: user
+    password: password
+    url: jdbc:postgresql://localhost:5432/test_db_lb
+  liquibase:
+    enabled: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

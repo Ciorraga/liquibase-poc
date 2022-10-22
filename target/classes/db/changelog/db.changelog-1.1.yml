@@ -1,0 +1,67 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1_1_order-newtable-lb
+      author: poc-liquibase-ms
+      preConditions:
+        onFail: MARK_RAN
+        not: 
+          tableExists:
+            tableName: order
+      comments: creating order table
+      changes:
+        - createTable:
+            tableName: order
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_order
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: NUMERIC
+                  constraints:
+                    nullable: false                        
+  - changeSet:
+      id: 1_1_product-newtable-lb
+      author: poc-liquibase-ms
+      preConditions:
+        onFail: MARK_RAN
+        not:       
+          tableExists:
+            tableName: product
+      comments: creating product table
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_product
+                  name: id
+                  type: BIGSERIAL
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false                         
+                    
